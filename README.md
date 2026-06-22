@@ -289,3 +289,11 @@ Tools
 * GitHub
 
 ---
+
+# Deployment
+Project deployed using `Vercel`
+```bash
+https://ai-knowledge-extraction-platform.vercel.app/
+```
+
+---
