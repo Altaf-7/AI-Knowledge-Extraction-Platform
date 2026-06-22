@@ -95,6 +95,7 @@ AI-Knowledge-Extractor/
 
 │
 ├── public/
+│   │
 │   ├── css/
 │   │      style.css
 │   │
@@ -105,7 +106,7 @@ AI-Knowledge-Extractor/
 │   └── index.html
 │
 ├── src/
-│
+│   │
 │   ├── routes/
 │   │      scraper.routes.js
 │   │
@@ -135,9 +136,15 @@ AI-Knowledge-Extractor/
 │          gemini.js
 │
 ├── python/
-│      scraper.py
-│      cleaner.py
+│   │
+│   ├── app/
+│   │      main.py
+│   │      scraper.py
+│   │      cleaner.py
+│   │
+│   └── requirements.txt
 │
+│ 
 ├── cache/
 │
 ├── exports/
@@ -151,8 +158,7 @@ AI-Knowledge-Extractor/
 ├── .gitignore
 ├── package.json
 ├── server.js
-├── README.md
-└── requirements.txt
+└── README.md
 ```
 ---
 
