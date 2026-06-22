@@ -96,7 +96,11 @@ AI-Knowledge-Extractor/
 │
 ├── public/
 │   ├── css/
+│   │      style.css
+│   │
 │   ├── js/
+│   │      app.js
+│   │
 │   ├── images/
 │   └── index.html
 │
