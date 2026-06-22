@@ -1,0 +1,25 @@
+{
+  "name": "ai-knowledge-extraction-platform",
+  "version": "1.0.0",
+  "description": "An application that extracts, processes, analyzes, and summarizes web content using a distributed multi-service architecture. ",
+  "homepage": "https://github.com/Altaf-7/AI-Knowledge-Extraction-Platform#readme",
+  "bugs": {
+    "url": "https://github.com/Altaf-7/AI-Knowledge-Extraction-Platform/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Altaf-7/AI-Knowledge-Extraction-Platform.git"
+  },
+  "license": "ISC",
+  "author": "Altaf",
+  "type": "commonjs",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1"
+  }
+}

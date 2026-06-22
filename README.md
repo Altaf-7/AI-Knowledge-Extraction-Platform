@@ -148,8 +148,9 @@ AI-Knowledge-Extractor/
 │      architecture.png
 │
 ├── .env
-├── server.js
+├── .gitignore
 ├── package.json
+├── server.js
 ├── README.md
 └── requirements.txt
 ```
