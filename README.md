@@ -149,6 +149,7 @@ AI-Knowledge-Extractor/
 ├── README.md
 └── requirements.txt
 ```
+---
 
 # Features
 
@@ -161,7 +162,6 @@ AI-Knowledge-Extractor/
 * Extract headings
 * Extract paragraphs
 
----
 
 ## AI Processing
 
@@ -172,7 +172,6 @@ AI-Knowledge-Extractor/
 * Reading time estimation
 * Sentiment analysis
 
----
 
 ## Backend
 
@@ -182,7 +181,6 @@ AI-Knowledge-Extractor/
 * Centralized error handling
 * Async request handling
 
----
 
 ## Database
 
@@ -195,7 +193,6 @@ Stores
 * Reading Time
 * Cached AI Response
 
----
 
 ## Performance
 
@@ -204,7 +201,6 @@ Stores
 * Efficient HTML cleaning
 * Optimized AI prompt
 
----
 
 ## Reliability
 
@@ -253,6 +249,8 @@ Response
   "cached":false
 }
 ```
+
+---
 
 # Technologies Used
 
