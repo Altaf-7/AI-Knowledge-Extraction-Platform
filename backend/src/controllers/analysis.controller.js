@@ -1,10 +1,10 @@
-const {scrapeWebsite} = require('../services/scraper.service.js');
+const {analyzeWebsite} = require('../services/analysis.service.js');
 
-const scrapeWebsiteController = async (req,res) => {
+const analyzeWebsiteController = async (req,res) => {
     try{
         const{url} = req.body;
 
-        const result = await scrapeWebsite(url);
+        const result = await analyzeWebsite(url);
         return res.json(result);
     }
     catch(error){
@@ -16,5 +16,5 @@ const scrapeWebsiteController = async (req,res) => {
 };
 
 module.exports = {
-    scrapeWebsiteController
+    analyzeWebsiteController
 }

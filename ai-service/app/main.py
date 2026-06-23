@@ -11,7 +11,7 @@ app = FastAPI(
 class URLRequest(BaseModel):
     url:str
 
-@app.post("/scrape")
+@app.post("/analyze")
 def scrape_website(data:URLRequest):
     result = fetch_website_content(data.url)
     return result

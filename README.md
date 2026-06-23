@@ -36,7 +36,7 @@ Input Validation             Cache Lookup
           Cache Miss? Continue
                    │
                    ▼
-         Python Scraper Service
+          FastAPI AI Service
                    │
         BeautifulSoup Extraction
                    │
@@ -58,43 +58,12 @@ Input Validation             Cache Lookup
 
 ---
 
-# Software Architecture
-
-The application follows a layered architecture.
-
-```
-Presentation Layer
-
-↓
-
-API Layer
-
-↓
-
-Business Logic Layer
-
-↓
-
-Python Scraper Service
-
-↓
-
-AI Processing Layer
-
-↓
-
-Persistence Layer
-```
-
----
-
 # Folder Structure
 
 ```
 AI-Knowledge-Extractor/
-
 │
-├── public/
+├── frontend/
 │   │
 │   ├── css/
 │   │      style.css
@@ -103,48 +72,68 @@ AI-Knowledge-Extractor/
 │   │      app.js
 │   │
 │   ├── images/
+│   │
 │   └── index.html
 │
-├── src/
+├── backend/
 │   │
-│   ├── routes/
-│   │      scraper.routes.js
+│   ├── src/
+│   │   │
+│   │   ├── routes/
+│   │   │      analysis.routes.js
+│   │   │
+│   │   ├── controllers/
+│   │   │      analysis.controller.js
+│   │   │
+│   │   ├── services/
+│   │   │      analysis.service.js
+│   │   │      cache.service.js
+│   │   │
+│   │   ├── middleware/
+│   │   │      validator.js
+│   │   │      errorHandler.js
+│   │   │
+│   │   ├── database/
+│   │   │      sqlite.js
+│   │   │
+│   │   ├── utils/
+│   │   │      logger.js
+│   │   │
+│   │   └── config/
+│   │          database.js
 │   │
-│   ├── controllers/
-│   │      scraper.controller.js
-│   │
-│   ├── services/
-│   │      scraper.service.js
-│   │      ai.service.js
-│   │      cache.service.js
-│   │
-│   ├── workers/
-│   │      python.worker.js
-│   │
-│   ├── middleware/
-│   │      errorHandler.js
-│   │      validator.js
-│   │
-│   ├── utils/
-│   │      logger.js
-│   │      cleaner.js
-│   │
-│   ├── database/
-│   │      sqlite.js
-│   │
-│   └── config/
-│          gemini.js
+│   ├── package.json
+│   └── server.js
 │
-├── python/
+├── ai-service/
 │   │
 │   ├── app/
-│   │      main.py
-│   │      scraper.py
-│   │      cleaner.py
+│   │   │
+│   │   ├── main.py
+│   │   │
+│   │   ├── routers/
+│   │   │      analysis.py
+│   │   │
+│   │   ├── services/
+│   │   │      analysis_service.py
+│   │   │      scraper_service.py
+│   │   │      prompt_service.py
+│   │   │      gemini_service.py
+│   │   │      parser_service.py
+│   │   │
+│   │   ├── schemas/
+│   │   │      request.py
+│   │   │      response.py
+│   │   │
+│   │   ├── utils/
+│   │   │      cleaner.py
+│   │   │      logger.py
+│   │   │
+│   │   └── config.py
 │   │
-│   └── requirements.txt
+│   ├── requirements.txt
+│   └── .env
 │
-│ 
 ├── cache/
 │
 ├── exports/
@@ -154,10 +143,7 @@ AI-Knowledge-Extractor/
 ├── docs/
 │      architecture.png
 │
-├── .env
 ├── .gitignore
-├── package.json
-├── server.js
 └── README.md
 ```
 ---
@@ -228,7 +214,7 @@ Stores
 ## POST
 
 ```
-/api/extract
+/api/analyze
 ```
 
 Input

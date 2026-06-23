@@ -2,7 +2,7 @@ const express = require('express');
 const path = require('path');
 require('dotenv').config();
 
-const scraperRoutes = require('./src/routes/scraper.routes.js');
+const analyzeWebsiteRoutes = require('./src/routes/analysis.routes.js');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -17,7 +17,7 @@ app.use(express.static(path.join(__dirname,'public')));
 
 
 // API Routes
-app.use('/api',scraperRoutes);
+app.use('/api',analyzeWebsiteRoutes);
 
 
 // Start Server
