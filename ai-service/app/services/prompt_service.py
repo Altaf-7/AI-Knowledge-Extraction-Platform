@@ -23,6 +23,7 @@ def get_system_prompt():
 
         Return ONLY valid JSON(Example below)
         {
+            "title": "string",
             "summary": "string",
             "keywords": ["string"],
             "mainTopics":["string"],

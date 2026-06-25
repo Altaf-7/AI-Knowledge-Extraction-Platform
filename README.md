@@ -120,7 +120,6 @@ AI-Knowledge-Extractor/
 │   │   │      scraper_service.py
 │   │   │      prompt_service.py
 │   │   │      gemini_service.py
-│   │   │      parser_service.py
 │   │   │
 │   │   ├── schemas/
 │   │   │      request.py
@@ -185,10 +184,8 @@ AI-Knowledge-Extractor/
 Stores
 
 * URL
-* Summary
-* Keywords
+* Title
 * Timestamp
-* Reading Time
 * Cached AI Response
 
 
@@ -240,9 +237,22 @@ Response
       "..."
   ],
 
-  "readingTime":"5 min",
+  "mainTopics":[
+       "...",
+       "...",
+       "..."
+  ],
+
+  "faq":[
+       {
+           "question": "...",
+           "answer": "..."
+       }
+  ],
 
   "sentiment":"Positive",
+  
+  "readingTime":"5 min",
 
   "cached":false
 }
@@ -274,12 +284,13 @@ Artificial Intelligence
 
 Database
 
-* SQLite
+* better-SQLite
 
 Tools
 
 * Git
 * GitHub
+* VS Code
 
 ---
 
