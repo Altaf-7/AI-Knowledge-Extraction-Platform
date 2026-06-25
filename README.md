@@ -17,45 +17,39 @@ The project is intentionally designed using multiple services communicating toge
 # Demo Workflow
 
 ```
-                 User
-                   │
-                   ▼
-          HTML/CSS/JavaScript UI
-                   │
-             HTTP POST Request
-                   │
-                   ▼
-            Express Backend API
-                   │
-     ┌─────────────┴──────────────┐
-     │                            │
-Input Validation             Cache Lookup
-     │                            │
-     └─────────────┬──────────────┘
-                   │
-          Cache Miss? Continue
-                   │
-                   ▼
-          FastAPI AI Service
-                   │
-        BeautifulSoup Extraction
-                   │
-          HTML Cleaning Pipeline
-                   │
-          Text Processing Layer
-                   │
-                   ▼
-             Gemini AI Service
-                   │
-      Summary + Keywords + FAQ
-                   │
-                   ▼
-          Database + Cache Store
-                   │
-                   ▼
-          JSON Response to Client
+                    Browser
+                       │
+                       ▼
+                Express API Gateway
+                       │
+                Validate Request
+                       │
+                       ▼
+                 SQLite Cache
+              ┌────────┴────────┐
+              │                 │
+           Cache Hit        Cache Miss
+              │                 │
+              │                 ▼
+              │          FastAPI Service
+              │                 │
+              │        Analysis Orchestrator
+              │                 │
+              │     ┌───────────┼────────────┐
+              │     │           │            │
+              │  Scraper      Prompt      Gemini
+              │     │           │            │
+              │     └───────────┼────────────┘
+              │                 │
+              │            Response Parser
+              │                 │
+              └──────────◄──────┘
+                       │
+                Save to SQLite
+                       │
+                       ▼
+                    Browser
 ```
-
 ---
 
 # Folder Structure
@@ -93,14 +87,21 @@ AI-Knowledge-Extractor/
 │   │   │      validator.js
 │   │   │      errorHandler.js
 │   │   │
-│   │   ├── database/
-│   │   │      sqlite.js
+│   │   ├── db/
+│   │   │      connection.js
+│   │   │      schema.js
+│   │   │
+│   │   ├── jobs/
+│   │   │      cacheCleanup.jobs.js
 │   │   │
 │   │   ├── utils/
 │   │   │      logger.js
 │   │   │
 │   │   └── config/
 │   │          database.js
+│   │
+│   ├── storage/
+│   │      extractor.db
 │   │
 │   ├── package.json
 │   └── server.js

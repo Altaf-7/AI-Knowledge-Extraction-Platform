@@ -3,6 +3,9 @@ const path = require('path');
 require('dotenv').config();
 
 const analyzeWebsiteRoutes = require('./src/routes/analysis.routes.js');
+const initializeSchema = require('./src/db/schema.js');
+const {removeExpiredCache} = require('./src/services/cache.service.js');
+const startCacheCleanupJob = require('./src/jobs/cacheCleanup.job.js');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -19,6 +22,14 @@ app.use(express.static(path.join(__dirname,'public')));
 // API Routes
 app.use('/api',analyzeWebsiteRoutes);
 
+// Creating Cache Table
+initializeSchema();
+
+// Cache Clear Service
+removeExpiredCache();
+
+// automatic Clear Service
+startCacheCleanupJob();
 
 // Start Server
 app.listen(PORT,()=>{
