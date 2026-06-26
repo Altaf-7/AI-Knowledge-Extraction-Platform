@@ -1,6 +1,6 @@
 const errorHandler = (err, req, res, next) => {
 
-    console.error(err);
+    // console.error(err);
 
     // Already handled
     if (res.headersSent) {
@@ -10,6 +10,8 @@ const errorHandler = (err, req, res, next) => {
     return res.status(err.statusCode || 500).json({
 
         success: false,
+
+        data: null,
 
         message:
             err.message ||

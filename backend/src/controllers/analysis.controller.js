@@ -10,32 +10,36 @@ const analyzeWebsiteController = async (req,res,next) => {
         return res.json({
             success: true,
             data: {
-                cache
-            }
+                ...cache
+            },
+            message: "Express API cached Response",
+            errorCode: null
         });
     }
 
     // call analyze-service
     try{
-        const result = await analyzeWebsite(url);
-        saveAnalysis(url,result);
-        const response = {
-            success: true,
-            data: {
-                ...result,
-                "cached":false
-            }
-        }
+        const parsed_result_obj = await analyzeWebsite(url);
 
-        return res.json(response);
+        if(parsed_result_obj.success){
+            saveAnalysis(url,parsed_result_obj.data);
+            const response = {
+                success: true,
+                data: {
+                    ...parsed_result_obj.data,
+                    "cached":false
+                },
+                message: "Express to Fast API Response",
+                errorCode: null
+            }
+            return res.json(response);
+        }
+        else{
+            return next(new Error(parsed_result_obj.message));
+        }
     }
     catch(error){
-        res.status(500).json({
-            success: false,
-            message: "Failed to extract website.",
-            error: error.message
-        });
-        // next(error);
+        next(error);
     }
 };
 

@@ -9,10 +9,10 @@ const findByURL = (url) => {
 
     if(row){
         let {response_json} = row;
-        parsed_response = JSON.parse(response_json);
+        const parsed_response = JSON.parse(response_json);
         return {
             ...parsed_response,
-            "cache":true
+            "cached":true
         }
     }
     return null;
@@ -22,7 +22,7 @@ const saveAnalysis = (url,result) => {
     db.prepare(`
         INSERT INTO analysis_cache (url,title,response_json)
         VALUES (?,?,?)
-    `).run(url,result["title"],JSON.stringify(result));
+    `).run(url,result.title,JSON.stringify(result));
 };
 
 const removeExpiredCache = (
