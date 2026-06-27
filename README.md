@@ -4,6 +4,17 @@
 
 ---
 
+## Project Highlights
+
+- 🏗️ Service-oriented architecture (Express + FastAPI)
+- 🤖 AI-powered content extraction using Gemini
+- ⚡ SQLite cache-first request pipeline
+- 🔄 Scheduled background cache cleanup
+- 📦 Modular backend following separation of concerns
+- 🛡️ Centralized validation and error handling
+- 🚀 Production-inspired API Gateway architecture
+
+---
 ## Project Overview
 
 AI Knowledge Extraction Platform is a software engineering project designed to demonstrate backend architecture, asynchronous programming, API integration, AI-assisted processing, caching strategies, error handling, and system design principles.
@@ -50,6 +61,27 @@ The project is intentionally designed using multiple services communicating toge
                        ▼
                     Browser
 ```
+
+---
+
+# Architecture Diagrams
+
+## System Architecture
+
+![System Architecture](docs/images/system-architecture.png)
+
+---
+
+## API Flow
+
+![API Flow](docs/images/api-flow.png)
+
+---
+
+## Sequence Diagram
+
+![Sequence Diagram](docs/images/sequence-diagram.png)
+
 ---
 
 # Folder Structure
@@ -195,6 +227,55 @@ Stores
 * Efficient HTML cleaning
 * Optimized AI prompt
 
+## Cache Architecture
+
+To reduce unnecessary scraping and AI inference, the Express API Gateway implements a cache-first strategy.
+
+```
+                    Express API Gateway
+                            │
+                            ▼
+                     Request Controller
+                            │
+                  Cache Lookup (SQLite)
+                    │               │
+               Cache Hit       Cache Miss
+                    │               │
+                    ▼               ▼
+              Return JSON     FastAPI Service
+                                      │
+                               Analysis Pipeline
+                                      │
+                               Save to Cache
+                                      │
+                                      ▼
+                                 Return JSON
+```
+
+Repeated requests never reach the FastAPI service, significantly reducing response time and AI API usage.
+
+
+## Background Jobs
+
+The backend runs scheduled maintenance jobs to automatically remove expired cache entries.
+
+```
+        Background Jobs
+               │
+               ▼
+     startCacheCleanupJob()
+               │
+        Every 3 Hour
+               │
+               ▼
+     removeExpiredCache()
+               │
+               ▼
+            SQLite
+```
+
+This keeps the cache lightweight while preventing stale AI responses from being served indefinitely.
+
 
 ## Reliability
 
@@ -267,43 +348,136 @@ Response
 
 # Technologies Used
 
-Frontend
+Development Tools
 
-* HTML
-* CSS
-* JavaScript
+- Git
+- GitHub
+- VS Code
+- Postman
 
-Backend
+Deployment
 
-* Node.js
-* Express.js
-
-Python
-
-* BeautifulSoup
-* Requests
-
-Artificial Intelligence
-
-* Gemini API
+- Render
 
 Database
 
-* better-SQLite
+- better-sqlite3
 
-Tools
+Artificial Intelligence
 
-* Git
-* GitHub
-* VS Code
-* Postman
+- Gemini API
+
+Python
+
+- FastAPI
+- BeautifulSoup
+- Requests
+
+Backend
+
+- Express.js
+- Axios
+
+Frontend
+
+- HTML
+- CSS
+- JavaScript
+
+---
+
+# Engineering Concepts Demonstrated
+
+This project demonstrates practical software engineering concepts including:
+
+- Layered Architecture
+- Service-Oriented Design
+- API Gateway Pattern
+- Separation of Concerns
+- Cache-First Request Processing
+- Inter-Service HTTP Communication
+- AI Pipeline Orchestration
+- RESTful API Design
+- SQLite-Based Response Caching
+- Background Job Scheduling
+- Configuration Management
+- Input Validation
+- Centralized Error Handling
+- Retry Mechanism
+- Graceful Failure Recovery
+- Modular Project Structure
+
+---
+
+# Why this Project?
+
+This project was built to demonstrate production-oriented backend engineering rather than simply integrating an AI API.
+
+Key goals include:
+
+- Designing a modular multi-service architecture.
+- Building a cache-first API Gateway.
+- Separating business logic across independent services.
+- Implementing reliable AI request orchestration.
+- Demonstrating software engineering principles suitable for scalable systems.
+
+---
+
+# Future Improvements
+
+### Infrastructure
+
+- Docker support
+- Docker Compose
+- Nginx Reverse Proxy
+- Kubernetes deployment
+
+### Performance
+
+- Redis distributed cache
+- Background task queue
+- Rate limiting
+- Response compression
+
+### AI
+
+- Multi-model support (Gemini, OpenAI, Claude)
+- Streaming responses
+- Semantic search
+- Vector database integration
+- Retrieval-Augmented Generation (RAG)
+
+### Backend
+
+- PostgreSQL support
+- Authentication & Authorization
+- User accounts
+- API versioning
+- Metrics & Monitoring
+
+### Frontend
+
+- Search history
+- Dashboard
+- Export to PDF
+- Dark mode
+- Shareable analysis links
+
+### DevOps
+
+- CI/CD with GitHub Actions
+- Unit & Integration Tests
+- Automated deployment
+- Health check endpoints
 
 ---
 
 # Deployment
-Project deployed using `Vercel`
+Project deployed using `Render`
 ```bash
-https://ai-knowledge-extraction-platform.vercel.app/
+https://ai-knowledge-extraction-platform.onrender.com
+
+https://ai-knowledge-extraction-api.onrender.com
 ```
 
 ---

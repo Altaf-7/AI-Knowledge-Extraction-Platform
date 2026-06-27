@@ -27,11 +27,10 @@ const activateLoader = () => {
 }
 
 const fetchAPI = async (url) => {
-    const apiURL = "http://localhost:3000/api/analyze";
     const data = {url:url};
 
     try{
-        const response =  await fetch(apiURL,{
+        const response =  await fetch("/api/analyze",{
             method: 'POST',
             headers:{'content-Type': 'application/json'},
             body: JSON.stringify(data)
