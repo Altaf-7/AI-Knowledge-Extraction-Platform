@@ -8,9 +8,10 @@ API_KEY=os.getenv('GEMINI_API_KEY')
 if not API_KEY:
     raise ValueError("GEMINI_API_KEY is not configured.")
 
-PRIMARY_MODEL="gemini-2.5-flash"
-FALLBACK_MODEL = "gemini-1.5-flash"
+PRIMARY_MODEL=os.getenv('PRIMARY_MODEL_NAME')
 
-TEMPERATURE=0.2
+FALLBACK_MODEL=os.getenv('FALLBACK_MODEL_NAME')
 
-MAX_OUTPUT_TOKENS=2048
+TEMPERATURE=os.getenv('TEMPERATURE')
+
+MAX_OUTPUT_TOKENS=os.getenv('MAX_OUTPUT_TOKENS')

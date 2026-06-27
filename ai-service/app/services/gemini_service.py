@@ -2,7 +2,6 @@ from google import genai
 from google.genai.errors import APIError
 from tenacity import retry, stop_after_attempt, wait_exponential, retry_if_exception_type
 from app.config import API_KEY, PRIMARY_MODEL, FALLBACK_MODEL, TEMPERATURE, MAX_OUTPUT_TOKENS
-from app.schemas.response import AnalyzeResponse
 import json
 
 client = genai.Client(api_key=API_KEY)
@@ -23,11 +22,9 @@ def call_gemini_service(system_prompt, user_prompt, model_name=PRIMARY_MODEL):
                 max_output_tokens=MAX_OUTPUT_TOKENS
             )
         )
-        return AnalyzeResponse(
+        return dict(
             success=True,
-            data=json.loads(response.text),
-            message="Gemini JSON Response Available",
-            errorCode=None
+            response=json.loads(response.text)
         )
     
     except APIError as e:
@@ -38,7 +35,10 @@ def call_gemini_service(system_prompt, user_prompt, model_name=PRIMARY_MODEL):
     except Exception as e:
         # This catches local code issues (like NameErrors, TypeErrors, etc.)
         print(f"Local code or unexpected error: {type(e).__name__} - {e}")
-        raise e
+        return dict(
+                success=False,
+                response=e
+            )
 
 
 
@@ -69,9 +69,7 @@ def call_gemini(system_prompt, user_prompt):
             # Attempting fallback model
             return call_gemini_service(system_prompt,user_prompt,FALLBACK_MODEL)
         except Exception as fallback_error:
-            return AnalyzeResponse(
+            return dict(
                 success=False,
-                data=None,
-                message=str(primary_error + fallback_error),
-                errorCode="PRIMARY_MODEL_FAILED + FALLBACK_MODEL_FAILED"
+                response=fallback_error
             )

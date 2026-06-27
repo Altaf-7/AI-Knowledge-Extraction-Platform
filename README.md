@@ -8,7 +8,7 @@
 
 AI Knowledge Extraction Platform is a software engineering project designed to demonstrate backend architecture, asynchronous programming, API integration, AI-assisted processing, caching strategies, error handling, and system design principles.
 
-Unlike a traditional web scraper, this application transforms raw webpages into structured knowledge using an AI processing pipeline.
+Unlike a traditional web scraper, this application transforms raw webpages into structured easily understandable knowledge using an AI processing pipeline.
 
 The project is intentionally designed using multiple services communicating together, similar to production software systems.
 
@@ -41,11 +41,11 @@ The project is intentionally designed using multiple services communicating toge
               │     │           │            │
               │     └───────────┼────────────┘
               │                 │
-              │            Response Parser
+              │          Response Formatter
+              │                 │
+              │            Save to SQLite
               │                 │
               └──────────◄──────┘
-                       │
-                Save to SQLite
                        │
                        ▼
                     Browser
@@ -64,6 +64,7 @@ AI-Knowledge-Extractor/
 │   │
 │   ├── js/
 │   │      app.js
+│   │      validator.js
 │   │
 │   ├── images/
 │   │
@@ -94,17 +95,16 @@ AI-Knowledge-Extractor/
 │   │   ├── jobs/
 │   │   │      cacheCleanup.jobs.js
 │   │   │
-│   │   ├── utils/
-│   │   │      logger.js
-│   │   │
 │   │   └── config/
-│   │          database.js
+│   │          config.js
 │   │
 │   ├── storage/
 │   │      extractor.db
 │   │
+│   ├── package-lock.json
 │   ├── package.json
-│   └── server.js
+│   ├── server.js
+│   └── .env
 │
 ├── ai-service/
 │   │
@@ -120,28 +120,26 @@ AI-Knowledge-Extractor/
 │   │   │      scraper_service.py
 │   │   │      prompt_service.py
 │   │   │      gemini_service.py
+│   │   │      format_service.py
 │   │   │
 │   │   ├── schemas/
 │   │   │      request.py
 │   │   │      response.py
-│   │   │
-│   │   ├── utils/
-│   │   │      cleaner.py
-│   │   │      logger.py
 │   │   │
 │   │   └── config.py
 │   │
 │   ├── requirements.txt
 │   └── .env
 │
-├── cache/
-│
-├── exports/
-│
-├── logs/
-│
 ├── docs/
-│      architecture.png
+│   ├── example_responses/
+│   │      bbc_news.json
+│   │      railway_fastAPi.json
+│   │
+│   └── images/
+│          system-architecture.png
+│          sequence-diagram.png
+│          api-flow.png
 │
 ├── .gitignore
 └── README.md
@@ -166,6 +164,7 @@ AI-Knowledge-Extractor/
 * Key insights
 * Frequently Asked Questions
 * Keyword extraction
+* Main Topic extraction
 * Reading time estimation
 * Sentiment analysis
 
@@ -186,7 +185,7 @@ Stores
 * URL
 * Title
 * Timestamp
-* Cached AI Response
+* AI Response
 
 
 ## Performance
@@ -212,7 +211,7 @@ Stores
 ## POST
 
 ```
-/api/analyze
+Express: /api/analyze
 ```
 
 Input
@@ -227,34 +226,40 @@ Response
 
 ```json
 {
-  "title":"Example Website",
+    "success": true,
+    "data": {
+        "title": "Example Website",
 
-  "summary":"...",
+        "summary": "...",
 
-  "keywords":[
-      "...",
-      "...",
-      "..."
-  ],
+        "keywords": [
+            "...",
+            "...",
+            "..."
+        ],
 
-  "mainTopics":[
-       "...",
-       "...",
-       "..."
-  ],
+        "mainTopics": [
+            "...",
+            "...",
+            "..."
+        ],
 
-  "faq":[
-       {
-           "question": "...",
-           "answer": "..."
-       }
-  ],
+        "faq": [
+            {
+                "question": "...",
+                "answer": "..."
+            }
+        ],
 
-  "sentiment":"Positive",
-  
-  "readingTime":"5 min",
+        "sentiment": "Positive",
 
-  "cached":false
+        "readingTime": "5 min",
+
+        "cached": false
+    },
+    "message": "Express to FastAPI Response",
+
+    "errorCode": null
 }
 ```
 
@@ -291,6 +296,7 @@ Tools
 * Git
 * GitHub
 * VS Code
+* Postman
 
 ---
 

@@ -7,7 +7,7 @@ const analyzeWebsiteController = async (req,res,next) => {
     // call cache-service
     const cache = findByURL(url);
     if(cache){
-        return res.json({
+        return res.status(200).json({
             success: true,
             data: {
                 ...cache
@@ -32,7 +32,7 @@ const analyzeWebsiteController = async (req,res,next) => {
                 message: "Express to Fast API Response",
                 errorCode: null
             }
-            return res.json(response);
+            return res.status(200).json(response);
         }
         else{
             return next(new Error(parsed_result_obj.message));

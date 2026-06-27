@@ -1,0 +1,45 @@
+{
+    "success": true,
+    "data": {
+        "title": "Ayodhya, Ram Mandir: Row over alleged theft of donations from Indian temple",
+        "summary": "The newly inaugurated Ram temple in Ayodhya, a significant Hindu pilgrimage center, is facing allegations of embezzlement. Tens of millions of rupees donated by devotees are reportedly stolen. The temple, inaugurated by Prime Minister Narendra Modi in January 2024, was built on the site of a 16th-century mosque demolished in 1992, an event that triggered widespread riots.",
+        "keywords": [
+            "Ayodhya",
+            "Ram Mandir",
+            "donations",
+            "theft",
+            "embezzlement",
+            "Hindu temple",
+            "Narendra Modi",
+            "Uttar Pradesh",
+            "pilgrimage",
+            "mosque demolition"
+        ],
+        "mainTopics": [
+            "Religious controversies",
+            "Financial misconduct",
+            "Indian politics",
+            "Historical conflicts",
+            "Pilgrimage sites"
+        ],
+        "faq": [
+            {
+                "question": "What is the controversy surrounding the Ram temple in Ayodhya?",
+                "answer": "The Ram temple is embroiled in a row over alleged theft and embezzlement of tens of millions of rupees in donations from devotees."
+            },
+            {
+                "question": "When was the Ram temple inaugurated?",
+                "answer": "The Ram temple was inaugurated in January 2024 by Indian Prime Minister Narendra Modi."
+            },
+            {
+                "question": "What is the historical background of the Ram temple site?",
+                "answer": "The temple was built on the site of a 16th-century mosque that was torn down by Hindu mobs in 1992, an event that led to riots killing nearly 2,000 people."
+            }
+        ],
+        "sentiment": "Negative",
+        "readingTime": "Less than 1 minute",
+        "cached": false
+    },
+    "message": "Express to Fast API Response",
+    "errorCode": null
+}

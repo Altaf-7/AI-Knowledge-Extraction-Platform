@@ -1,0 +1,62 @@
+{
+    "success": true,
+    "data": {
+        "title": "Railway | The all-in-one intelligent cloud provider",
+        "summary": "Railway is an all-in-one intelligent cloud provider designed to simplify software deployment and management. It offers effortless app deployment with auto-configuration and instant previews, a visual canvas for infrastructure management, instant and zero-setup networking with private connections and load balancing, seamless scaling from single instances to global deployments, and comprehensive monitoring with centralized logs, metrics, and alerts for clarity and proactive issue resolution.",
+        "keywords": [
+            "Railway",
+            "cloud provider",
+            "intelligent cloud",
+            "software deployment",
+            "infrastructure management",
+            "networking",
+            "scaling",
+            "monitoring",
+            "auto-config",
+            "instant previews",
+            "visual canvas",
+            "private connections",
+            "load balancing",
+            "global deployment",
+            "logs",
+            "metrics",
+            "alerts",
+            "debugging"
+        ],
+        "mainTopics": [
+            "Cloud Computing",
+            "Software Deployment",
+            "Infrastructure as Code (IaC)",
+            "Network Management",
+            "Application Scaling",
+            "Monitoring and Observability"
+        ],
+        "faq": [
+            {
+                "question": "What is Railway?",
+                "answer": "Railway is an all-in-one intelligent cloud provider that helps users ship software peacefully by simplifying deployment, networking, scaling, and monitoring."
+            },
+            {
+                "question": "How does Railway simplify software deployment?",
+                "answer": "Railway allows users to deploy anything without complexity by connecting their repository, handling auto-configuration, providing instant previews, and requiring no new tools to learn."
+            },
+            {
+                "question": "What networking features does Railway offer?",
+                "answer": "Railway provides instant networking with zero setup, including private connections, public endpoints, SSL, load balancing, 100 Gbps internal networking, and built-in protocol detection for HTTP, TCP, gRPC, and WebSockets."
+            },
+            {
+                "question": "How does Railway handle application scaling?",
+                "answer": "Railway enables users to scale CPU and RAM, add replicas with load balancing, and expand from a single instance to a global deployment to handle more load and reach users faster globally."
+            },
+            {
+                "question": "What monitoring and observability tools are available on Railway?",
+                "answer": "Railway offers centralized logs, metrics, and alerts in one place. Users can create custom dashboards, set alerts for Slack, Discord, or email, and perform contextual debugging with all logs in one place."
+            }
+        ],
+        "sentiment": "Positive",
+        "readingTime": "2 minutes"
+    },
+    "message": "Gemini JSON Response Available",
+    "errorCode": null,
+    "status": 200
+}

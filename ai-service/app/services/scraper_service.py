@@ -25,9 +25,3 @@ def fetch_website_content(url:str):
         "title":title,
         "content":text[:2_000]
     }
-
-
-if __name__ == "__main__":
-    url = "http://example.com"
-    res = fetch_website_content(url)
-    print(res)

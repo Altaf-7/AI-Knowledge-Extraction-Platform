@@ -6,6 +6,7 @@ const validateAnalyzeRequest = (req, res, next) => {
     if (!url) {
         return res.status(400).json({
             success: false,
+            data:null,
             message: "URL is required.",
             errorCode: "URL_REQUIRED"
         });
@@ -15,6 +16,7 @@ const validateAnalyzeRequest = (req, res, next) => {
     if (typeof url !== "string") {
         return res.status(400).json({
             success: false,
+            data:null,
             message: "URL must be a string.",
             errorCode: "INVALID_URL_TYPE"
         });
@@ -26,6 +28,7 @@ const validateAnalyzeRequest = (req, res, next) => {
     if (trimmedURL.length === 0) {
         return res.status(400).json({
             success: false,
+            data:null,
             message: "URL cannot be empty.",
             errorCode: "EMPTY_URL"
         });
@@ -35,6 +38,7 @@ const validateAnalyzeRequest = (req, res, next) => {
     if (trimmedURL.length > 2048) {
         return res.status(400).json({
             success: false,
+            data:null,
             message: "URL is too long.",
             errorCode: "URL_TOO_LONG"
         });
@@ -50,6 +54,7 @@ const validateAnalyzeRequest = (req, res, next) => {
         ) {
             return res.status(400).json({
                 success: false,
+                data:null,
                 message: "Only HTTP and HTTPS URLs are supported.",
                 errorCode: "INVALID_PROTOCOL"
             });
@@ -59,6 +64,7 @@ const validateAnalyzeRequest = (req, res, next) => {
 
         return res.status(400).json({
             success: false,
+            data:null,
             message: "Invalid URL.",
             errorCode: "INVALID_URL"
         });

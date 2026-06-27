@@ -6,7 +6,7 @@ const analyzeWebsite = async (url) => {
     }
 
     const response = await axios.post(
-        `${process.env.FASTAPI_URL}/analyze`,
+        `${process.env.FASTAPI_URL}/api/analyze`,
         payload
     );
     return response.data;

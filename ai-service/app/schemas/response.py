@@ -7,7 +7,7 @@ class FAQItem(BaseModel):
     answer: str
 
 
-class AnalysisData(BaseModel):
+class AnalysisResult(BaseModel):
     title: str
     summary: str
     keywords: List[str]
@@ -19,6 +19,7 @@ class AnalysisData(BaseModel):
 
 class AnalyzeResponse(BaseModel):
     success: bool
-    data: Optional[AnalysisData] = None
+    data: Optional[AnalysisResult] = None
     message: str
     errorCode: Optional[str] = None
+    status: int
