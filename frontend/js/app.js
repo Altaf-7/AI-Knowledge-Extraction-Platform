@@ -1,3 +1,5 @@
+alert("This website is still under test phase, errors can occur.");
+
 const btn = document.querySelector('.submit-button');
 const loading = document.querySelector('.loader-area');
 const error = document.querySelector('.error-message-area');

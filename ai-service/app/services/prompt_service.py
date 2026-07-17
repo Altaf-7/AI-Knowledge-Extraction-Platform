@@ -44,6 +44,6 @@ def build_prompt(article:dict) -> str:
     Build the complete prompt sent to Gemini.
     """
     return (
-        f"Title:\n{article['title']}\n\n" +
-        f"Content:\n{article['content']}"
+        f"Title:\n{article['data']['title']}\n\n" +
+        f"Content:\n{article['data']['content']}"
     )

@@ -1,11 +1,11 @@
 from app.schemas.response import AnalyzeResponse, AnalysisResult
 
-def format_analysis_response(raw_data):
+def format_response(raw_data):
     if(raw_data["success"]):
         return AnalyzeResponse(
             success=True,
-            data=AnalysisResult(**(raw_data["response"])),
-            message="Gemini JSON Response Available",
+            data=AnalysisResult(**(raw_data["data"])),
+            message=raw_data["message"],
             errorCode=None,
             status=200
         )
@@ -13,7 +13,7 @@ def format_analysis_response(raw_data):
         return AnalyzeResponse(
             success=False,
             data=None,
-            message="Primary model failed. Fallback model also failed.",
-            errorCode=raw_data.response,
+            message=raw_data["message"],
+            errorCode=raw_data["errorCode"],
             status=500
         )

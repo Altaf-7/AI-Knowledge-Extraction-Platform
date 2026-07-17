@@ -25,7 +25,7 @@ Poppins
     --text-sm: 1.2rem;
     --text-base: 1.6rem;
     --text-paragraph: 2rem;
-    --text-h5: 2.4rem;
+    --text-span: 2.4rem;
     --text-h4: 3.2rem;
     --text-h3: 4rem;
     --text-h2: 4.8rem;
@@ -46,23 +46,13 @@ Poppins
     --font-family: 'Poppins', sans-serif;
 
     /* COLORS */
-    --primary-base: #339af0;
-    --primary-tint: #d0ebff;
-    --primary-shade: #1c7ed6;
-    --secondary-base: #9775fa;
-    --secondary-tint: #e5dbff;
-    --secondary-shade: #7048e8;
-    --tertiary-base: #ff922b;
-    --tertiary-tint: #ffe8cc;
-    --tertiary-shade: #f76707;
     --grey-base: #495057;
     --grey-tint: #f1f3f5;
     --grey-shade: #212529;
+    --blue-grey: #212830;
     --white: #ffffff;
-    --black: #000000; 
-    
-    /* MISCELLANEOUS */
-    --nav-height: 100px; /* Update the value in the flexbox topic */
+    --black: #000000;
+
 }
 
 * {
@@ -79,7 +69,8 @@ body {
     font-family: var(--font-family);
     font-weight: var(--font-weight-normal);
     line-height: var(--line-height-normal);
-    color: var(--grey-base);
+    color: var(--white);
+    background-color: var(--black);
 }
 
 .main-content-wrapper{
@@ -123,7 +114,7 @@ ul{
 }
 
 span{
-    font-size: var(--text-h5);
+    font-size: var(--text-span);
     font-weight: var(--font-weight-bold);
     line-height: var(--line-height-tight);
 }
@@ -142,55 +133,25 @@ small {
     border-radius: 8px;
 }
 
-.btn-primary:link, .btn-primary:visited {
-    color: var(--white);
-    background-color: var(--primary-base);
-    border: 2px solid var(--primary-base);
-    /* transition: 0.5s; */
-}
-
-.btn-primary:hover, .btn-primary:active {
-    color: var(--white);
-    background-color: var(--primary-shade);
-    border: 2px solid var(--primary-shade);
-    /* transform: scale(1.05, 1.05); */
-    /* box-shadow: 0px 3px 6px var(--grey-base); */
-}
-
-.btn-primary-outline:link, .btn-primary-outline:visited {
-    color: var(--primary-base);
-    background-color: var(--white);
-    border: 2px solid var(--primary-base);
-    /* transition: 0.5s; */
-}
-
-.btn-primary-outline:hover, .btn-primary-outline:active {
-    color: var(--primary-shade);
-    background-color: var(--white);
-    border: 2px solid var(--primary-shade);
-    /* transform: scale(1.05, 1.05); */
-    /* box-shadow: 0px 3px 6px var(--grey-base); */
-}
-
-.btn-secondary:link, .btn-secondary:visited {
-    color: var(--white);
-    background-color: var(--secondary-base);
-    border: 2px solid var(--secondary-base);
-    transition: 0.5s;
-}
-
-.btn-secondary:hover, .btn-secondary:active {
-    color: var(--white);
-    background-color: var(--secondary-shade);
-    border: 2px solid var(--secondary-shade);
-    /* transform: scale(1.05, 1.05);
-    box-shadow: 0px 3px 6px var(--grey-base); */
-}
-
 .submit-button{
     color: var(--white);
-    background-color: var(--primary-base);
-    border: 2px solid var(--primary-base);
+    background-color: var(--blue-grey);
+    border: 2px solid var(--blue-grey);
+}
+
+.submit-button:hover, .submit-button:active {
+    color: var(--white);
+    background-color: var(--grey-shade);
+    border: 2px solid var(--grey-shade);
+    transform: scale(1.05, 1.05);
+    /* box-shadow: 2px 2px 6px var(--grey-base); */
+}
+
+.submit-button:link, .submit-button:visited {
+    color: var(--white);
+    background-color: var(--grey-shade);
+    border: 2px solid var(--grey-shade);
+    /* transition: 0.5s; */
 }
 
 /* ----------------------- SECTIONS ----------------------- */
@@ -214,6 +175,7 @@ small {
 
 .hero-section{
     height: 85vh;
+    margin-bottom: 2rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -261,14 +223,10 @@ small {
 .loader {
     width: 50px;
     height: 50px;
-
     border: 5px solid #ddd;
     border-top: 5px solid #0d6efd;
-
     border-radius: 50%;
-
     animation: spin 1s linear infinite;
-
     margin: auto;
 }
 
@@ -298,20 +256,22 @@ small {
 /* ------ RESULT SECTION ------ */
 
 .result-section{
+    width: 90%;
+    margin: 0 auto;
     padding: 1rem;
     height: 95vh;
     display: none;
     flex-direction: column;
-    align-items: center;
+    align-items:flex-start;
     gap: 1rem;
 }
 
 .result-box{
-    width: 90%;
+    width: 100%;
     /* height: 100%; */
     min-height: 40rem;
     overflow:auto;
-    margin: 0 auto;
+    /* margin: 0 auto; */
     padding: 10rem;
     border: 1px solid var(--grey-base);
     border-radius: 1.2rem;

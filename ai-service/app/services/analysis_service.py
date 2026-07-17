@@ -1,7 +1,7 @@
 from app.services.scraper_service import fetch_website_content
 from app.services.prompt_service import get_system_prompt, build_prompt
 from app.services.gemini_service import call_gemini
-from app.services.format_service import format_analysis_response
+from app.services.format_service import format_response
 
 def analyze(url):
     """
@@ -17,6 +17,9 @@ def analyze(url):
     """
    
     article = fetch_website_content(url)
+
+    if not article["success"]:
+        return format_response(article)
   
     system_prompt = get_system_prompt()
 
@@ -24,6 +27,6 @@ def analyze(url):
 
     raw_gemini_response = call_gemini(system_prompt,user_prompt)
 
-    formatted_response = format_analysis_response(raw_gemini_response)
+    formatted_response = format_response(raw_gemini_response)
     
     return formatted_response
