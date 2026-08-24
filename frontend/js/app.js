@@ -1,5 +1,3 @@
-alert("This website is still under test phase, errors can occur.");
-
 const btn = document.querySelector('.submit-button');
 const loading = document.querySelector('.loader-area');
 const error = document.querySelector('.error-message-area');
@@ -18,8 +16,6 @@ const activateReusltSection = () => {
     loading.style.display = 'none';
     error.style.display = 'none';
     resSection.style.display = 'flex';
-            
-    resSection.scrollIntoView({behavior:'smooth',block:'start'});
 }
 
 const activateLoader = () => {
@@ -47,7 +43,6 @@ const fetchAPI = async (url) => {
 }
 
 const action = async () => {
-    // console.log("jello");
     activateLoader();
 
     const url = urlInput.value;
@@ -67,39 +62,64 @@ const action = async () => {
         if(response.success){
             const {title, summary, keywords, mainTopics, faq, sentiment, readingTime} = response.data;
 
-            const processedFaq = faq.map(obj => {
-                return (`
-                    <p><span>Question:</span> ${obj.question}</p>
-                    <p><span>Answer:</span> ${obj.answer}</p>
-                    <br>
-                `);
-            });
+            const faqSectionHtml = (faq && faq.length > 0) ? `
+                <div class="faq-section">
+                    <h4 class="faq-heading">Frequently Asked Questions</h4>
+                    ${faq.map(obj => `
+                        <div class="faq-item">
+                            <p class="faq-q">${obj.question}</p>
+                            <p class="faq-a">${obj.answer}</p>
+                        </div>
+                    `).join('')}
+                </div>
+            ` : '';
 
             activateReusltSection();
             
             resultBox.innerHTML = `
                 <h3>${title}</h3>
-                <p>${summary}</p>
-                <br>
-                <p><span>Main Topics:</span> ${mainTopics.join(', ')}</p>
-                <br>
-                <p><span>Keywords:</span> ${keywords.join(', ')}</p>
-                <br>
-                <p><span>Sentiment:</span> ${sentiment}</p>
-                <br>
-                <p><span>Reading Time:</span> ${readingTime}</p>
+                <p class="summary">${summary}</p>
+                
+                <div class="data-group">
+                    <span class="label">Main Topics</span>
+                    <div class="badge-container">
+                        ${mainTopics.map(topic => `<span class="badge">${topic}</span>`).join('')}
+                    </div>
+                </div>
+                
+                <div class="data-group">
+                    <span class="label">Keywords</span>
+                    <div class="badge-container">
+                        ${keywords.map(keyword => `<span class="badge">${keyword}</span>`).join('')}
+                    </div>
+                </div>
+                
+                <div class="data-group">
+                    <span class="label">Sentiment</span>
+                    <div class="badge-container">
+                        <span class="badge badge-sentiment">${sentiment}</span>
+                    </div>
+                </div>
+                
+                <div class="data-group">
+                    <span class="label">Reading Time</span>
+                    <p>${readingTime}</p>
+                </div>
 
-                <br><br>
-                <p><span>FAQs</span></p>
-                ${processedFaq}
+                ${faqSectionHtml}
             `;
+            
+            // Scroll after content is populated
+            setTimeout(() => {
+                resSection.scrollIntoView({behavior:'smooth',block:'start'});
+            }, 100);
         }
         else{
             console.log("error here " + response.message);
             activateErrorSection(response.message);
         }
     }
-    console.log("cached" + response.data.cached);
+    // console.log("cached" + response.data.cached);
     loading.style.display = 'none';
 }
 

@@ -1,6 +1,6 @@
 const errorHandler = (err, req, res, next) => {
 
-    // console.error(err);
+    console.error(err);
 
     // Already handled
     if (res.headersSent) {
